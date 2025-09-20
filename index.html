@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashinatpur Women's Degree College</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e2a8e;
+            --secondary-color: #8e44ad;
+            --accent-color: #ff6b6b;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(78, 42, 142, 0.8), rgba(78, 42, 142, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234e2a8e"/><text x="50%" y="50%" font-size="12" text-anchor="middle" fill="%23ffffff" font-family="monospace">College Image</text></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .admin-panel {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .admin-only {
+            border-left: 4px solid var(--accent-color);
+            background-color: #fff8f8;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .notice-board {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .teacher-card {
+            text-align: center;
+            position: relative;
+        }
+        
+        .teacher-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 4px solid var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .edit-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .teacher-card:hover .edit-icon {
+            opacity: 1;
+        }
+        
+        .admin-controls {
+            display: none;
+        }
+        
+        .logout-btn {
+            display: none;
+        }
+        
+        .teacher-phone {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .teacher-details {
+            margin-top: 10px;
+        }
+        
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>Kashinatpur Women's Degree College
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#teachers"><i class="fas fa-chalkboard-teacher me-1"></i> Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#students"><i class="fas fa-user-graduate me-1"></i> Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#notice"><i class="fas fa-clipboard-list me-1"></i> Notices</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" id="loginNavItem">
+                            <i class="fas fa-lock me-1"></i> Admin Login
+                        </a>
+                    </li>
+                    <li class="nav-item logout-btn" id="logoutNavItem">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt me-1"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Kashinatpur Women's Degree College</h1>
+            <p class="lead">Kashinatpur, Bera, Pabna, Rajshahi, Bangladesh</p>
+            <p>Empowering women through education since 1995</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Admin Panel (Visible only when admin is logged in) -->
+        <div class="admin-panel mb-5" id="adminPanel">
+            <h3 class="section-title">Admin Control Panel</h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="admin-only">
+                        <h4><i class="fas fa-images me-2"></i>College Interface Management</h4>
+                        <p>Add or remove images from the college interface</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal"><i class="fas fa-plus me-1"></i> Add Image</button>
+                            <button class="btn btn-danger" onclick="removeHeroImage()"><i class="fas fa-trash me-1"></i> Remove Image</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="admin-only">
+                        <h4><i class="fas fa-user-graduate me-2"></i>Student Information Management</h4>
+                        <p>Manage student records and information</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal"><i class="fas fa-edit me-1"></i> Edit Student Info</button>
+                            <button class="btn btn-success" onclick="exportData()"><i class="fas fa-download me-1"></i> Export Data</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mt-3">
+                    <div class="admin-only">
+                        <h4><i class="fas fa-chalkboard-teacher me-2"></i>Teacher Information Management</h4>
+                        <p>Update teacher information and profiles</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teacherModal"><i class="fas fa-edit me-1"></i> Edit Teacher Info</button>
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#addTeacherModal"><i class="fas fa-plus me-1"></i> Add New Teacher</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mt-3">
+                    <div class="admin-only">
+                        <h4><i class="fas fa-clipboard-list me-2"></i>Notice Board Management</h4>
+                        <p>Post and manage notices on the notice board</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noticeModal"><i class="fas fa-plus me-1"></i> Add Notice</button>
+                            <button class="btn btn-danger" onclick="removeNotices()"><i class="fas fa-trash me-1"></i> Remove Notices</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teachers Info Section -->
+        <section id="teachers" class="my-5">
+            <h3 class="section-title">Our Distinguished Teachers</h3>
+            
+            <div class="row" id="teachersContainer">
+                <!-- Teacher cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Student Info Section -->
+        <section id="students" class="my-5">
+            <h3 class="section-title">Student Information</h3>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> Student information is secured and only accessible to authorized personnel. Please login to access student records.
+                    </div>
+                    
+                    <div class="text-center my-4">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-lock me-1"></i> Login to Access Student Information
+                        </button>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5>Student Portal Features:</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Secure student records</li>
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Academic results</li>
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Attendance records</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Admin Capabilities:</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Add new students</li>
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Update student information</li>
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Generate reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notice Board Section -->
+        <section id="notice" class="my-5">
+            <h3 class="section-title">Notice Board</h3>
+            <div id="noticesContainer">
+                <!-- Notices will be loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Kashinatpur Women's Degree College</h5>
+                    <p>Kashinatpur, Bera, Pabna, Rajshahi, Bangladesh</p>
+                    <p><i class="fas fa-phone me-2"></i> +880 XXXXX-XXXXX</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@kashinatpurcollege.edu.bd</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#teachers" class="text-white">Teachers Info</a></li>
+                        <li><a href="#students" class="text-white">Student Info</a></li>
+                        <li><a href="#notice" class="text-white">Notice Board</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 bg-light">
+            <p class="text-center mb-0">© 2023 Kashinatpur Women's Degree College. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="login-form">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-lock fa-3x text-primary"></i>
+                            <h3 class="mt-2">Admin Access</h3>
+                        </div>
+                        <form id="adminLoginForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                        <div class="alert alert-warning mt-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i> Only authorized administrators can access the admin panel.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice Modal -->
+    <div class="modal fade" id="noticeModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Notice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="noticeForm">
+                        <div class="mb-3">
+                            <label for="noticeTitle" class="form-label">Notice Title</label>
+                            <input type="text" class="form-control" id="noticeTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noticeContent" class="form-label">Notice Content</label>
+                            <textarea class="form-control" id="noticeContent" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noticeDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="noticeDate" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNotice()">Save Notice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Modal -->
+    <div class="modal fade" id="teacherModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Teacher Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        Select a teacher to edit from the list below.
+                    </div>
+                    <div id="teacherEditList">
+                        <!-- Teachers will be listed here for editing -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Teacher Modal -->
+    <div class="modal fade" id="addTeacherModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Teacher</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="teacherForm">
+                        <div class="mb-3">
+                            <label for="teacherName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="teacherName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherPosition" class="form-label">Position</label>
+                            <input type="text" class="form-control" id="teacherPosition" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherQualification" class="form-label">Qualification</label>
+                            <input type="text" class="form-control" id="teacherQualification" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherExperience" class="form-label">Experience</label>
+                            <input type="text" class="form-control" id="teacherExperience" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="teacherPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherPhoto" class="form-label">Teacher Photo</label>
+                            <input class="form-control" type="file" id="teacherPhoto" accept="image/*">
+                            <div class="form-text">Upload a profile photo for the teacher</div>
+                            <img id="teacherPhotoPreview" class="preview-image" src="" alt="Preview">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="addNewTeacher()">Add Teacher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Teacher Modal -->
+    <div class="modal fade" id="editTeacherModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Teacher</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editTeacherForm">
+                        <input type="hidden" id="editTeacherId">
+                        <div class="mb-3">
+                            <label for="editTeacherName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="editTeacherName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTeacherPosition" class="form-label">Position</label>
+                            <input type="text" class="form-control" id="editTeacherPosition" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTeacherQualification" class="form-label">Qualification</label>
+                            <input type="text" class="form-control" id="editTeacherQualification" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTeacherExperience" class="form-label">Experience</label>
+                            <input type="text" class="form-control" id="editTeacherExperience" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTeacherPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="editTeacherPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTeacherPhoto" class="form-label">Teacher Photo</label>
+                            <input class="form-control" type="file" id="editTeacherPhoto" accept="image/*">
+                            <div class="form-text">Upload a new profile photo for the teacher</div>
+                            <img id="editTeacherPhotoPreview" class="preview-image" src="" alt="Preview">
+                            <input type="hidden" id="currentTeacherPhoto">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveTeacherChanges()">Save Changes</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteTeacher()">Delete Teacher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Upload Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload College Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="imageUpload" class="form-label">Select an image</label>
+                        <input class="form-control" type="file" id="imageUpload" accept="image/*">
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> Recommended size: 1200x600 pixels
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="uploadImage()">Upload Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial data
+            loadTeachers();
+            loadNotices();
+            
+            // Check if admin is already logged in
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                showAdminPanel();
+            }
+            
+            // Setup image preview for teacher photo
+            document.getElementById('teacherPhoto').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        document.getElementById('teacherPhotoPreview').src = event.target.result;
+                        document.getElementById('teacherPhotoPreview').style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Setup image preview for edit teacher photo
+            document.getElementById('editTeacherPhoto').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        document.getElementById('editTeacherPhotoPreview').src = event.target.result;
+                        document.getElementById('editTeacherPhotoPreview').style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Sample teacher data
+        const initialTeachers = [
+            {
+                id: 1,
+                name: "Dr. Fatema Begum",
+                position: "Principal",
+                qualification: "PhD in English Literature, University of Dhaka",
+                experience: "15+ years of experience",
+                phone: "+880 1712 345678",
+                photo: null
+            },
+            {
+                id: 2,
+                name: "Prof. Ayesha Sultana",
+                position: "Department of Mathematics",
+                qualification: "MSc in Mathematics, Rajshahi University",
+                experience: "12+ years of experience",
+                phone: "+880 1812 345679",
+                photo: null
+            },
+            {
+                id: 3,
+                name: "Dr. Salma Khan",
+                position: "Department of Physics",
+                qualification: "PhD in Physics, Bangladesh University of Engineering and Technology",
+                experience: "10+ years of experience",
+                phone: "+880 1912 345680",
+                photo: null
+            }
+        ];
+
+        // Sample notice data
+        const initialNotices = [
+            {
+                id: 1,
+                title: "Important Announcement",
+                content: "Final examinations for the academic year 2023-2024 will commence from November 15, 2023. All students are advised to complete their syllabus and collect admit cards from the administration office.",
+                date: "2023-10-10",
+                isNew: true
+            },
+            {
+                id: 2,
+                title: "Holiday Notice",
+                content: "The college will remain closed from December 16, 2023 to January 1, 2024 for winter vacation. Classes will resume on January 2, 2024.",
+                date: "2023-10-05"
+            },
+            {
+                id: 3,
+                title: "Cultural Event",
+                content: "Annual Cultural Festival will be held on November 20, 2023. Interested students should register their names with the cultural committee by November 10, 2023.",
+                date: "2023-09-28"
+            }
+        ];
+
+        // Load teachers from localStorage or use initial data
+        function loadTeachers() {
+            let teachers = JSON.parse(localStorage.getItem('teachers')) || initialTeachers;
+            const teachersContainer = document.getElementById('teachersContainer');
+            teachersContainer.innerHTML = '';
+            
+            teachers.forEach(teacher => {
+                const teacherPhoto = teacher.photo || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><rect width='120' height='120' fill='%238e44ad'/><text x='50%' y='50%' font-size='12' text-anchor='middle' fill='%23ffffff' font-family='monospace'>Teacher Image</text></svg>";
+                
+                const teacherCard = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card teacher-card">
+                            <div class="card-body">
+                                <img src="${teacherPhoto}" class="teacher-img" alt="${teacher.name}">
+                                <h5 class="card-title">${teacher.name}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${teacher.position}</h6>
+                                <p class="card-text">${teacher.qualification}</p>
+                                <div class="teacher-details">
+                                    ${teacher.phone ? `<p class="teacher-phone"><i class="fas fa-phone me-2"></i>${teacher.phone}</p>` : ''}
+                                    <p class="card-text"><small class="text-muted">${teacher.experience}</small></p>
+                                </div>
+                                ${localStorage.getItem('adminLoggedIn') === 'true' ? 
+                                `<div class="edit-icon" onclick="openEditTeacherModal(${teacher.id})">
+                                    <i class="fas fa-edit text-primary"></i>
+                                </div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                teachersContainer.innerHTML += teacherCard;
+            });
+            
+            // Also update the teacher edit list if admin is logged in
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                updateTeacherEditList();
+            }
+        }
+
+        // Load notices from localStorage or use initial data
+        function loadNotices() {
+            let notices = JSON.parse(localStorage.getItem('notices')) || initialNotices;
+            const noticesContainer = document.getElementById('noticesContainer');
+            noticesContainer.innerHTML = '';
+            
+            notices.forEach(notice => {
+                const formattedDate = new Date(notice.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                const noticeElement = `
+                    <div class="notice-board">
+                        ${notice.isNew ? `<div class="d-flex justify-content-between align-items-center">
+                            <h5><i class="fas fa-bullhorn me-2"></i> ${notice.title}</h5>
+                            <span class="badge bg-danger">New</span>
+                        </div>` : 
+                        `<h5><i class="fas fa-bullhorn me-2"></i> ${notice.title}</h5>`}
+                        <p>${notice.content}</p>
+                        <p class="text-muted"><small>Posted on: ${formattedDate}</small></p>
+                        ${localStorage.getItem('adminLoggedIn') === 'true' ? 
+                        `<button class="btn btn-sm btn-danger mt-2" onclick="deleteNotice(${notice.id})">
+                            <i class="fas fa-trash me-1"></i> Delete
+                        </button>` : ''}
+                    </div>
+                `;
+                noticesContainer.innerHTML += noticeElement;
+            });
+        }
+
+        // Update teacher edit list in admin panel
+        function updateTeacherEditList() {
+            const teachers = JSON.parse(localStorage.getItem('teachers')) || initialTeachers;
+            const teacherEditList = document.getElementById('teacherEditList');
+            teacherEditList.innerHTML = '';
+            
+            teachers.forEach(teacher => {
+                const teacherItem = `
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title">${teacher.name}</h5>
+                            <p class="card-text">${teacher.position}</p>
+                            <button class="btn btn-primary btn-sm" onclick="openEditTeacherModal(${teacher.id})">
+                                <i class="fas fa-edit me-1"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                `;
+                teacherEditList.innerHTML += teacherItem;
+            });
+        }
+
+        // Open edit teacher modal
+        function openEditTeacherModal(teacherId) {
+            const teachers = JSON.parse(localStorage.getItem('teachers')) || initialTeachers;
+            const teacher = teachers.find(t => t.id === teacherId);
+            
+            if (teacher) {
+                document.getElementById('editTeacherId').value = teacher.id;
+                document.getElementById('editTeacherName').value = teacher.name;
+                document.getElementById('editTeacherPosition').value = teacher.position;
+                document.getElementById('editTeacherQualification').value = teacher.qualification;
+                document.getElementById('editTeacherExperience').value = teacher.experience;
+                document.getElementById('editTeacherPhone').value = teacher.phone || '';
+                document.getElementById('currentTeacherPhoto').value = teacher.photo || '';
+                
+                // Show current photo if exists
+                if (teacher.photo) {
+                    document.getElementById('editTeacherPhotoPreview').src = teacher.photo;
+                    document.getElementById('editTeacherPhotoPreview').style.display = 'block';
+                } else {
+                    document.getElementById('editTeacherPhotoPreview').style.display = 'none';
+                }
+                
+                // Close the teacher list modal if open
+                const teacherModal = bootstrap.Modal.getInstance(document.getElementById('teacherModal'));
+                if (teacherModal) teacherModal.hide();
+                
+                // Open the edit teacher modal
+                const editTeacherModal = new bootstrap.Modal(document.getElementById('editTeacherModal'));
+                editTeacherModal.show();
+            }
+        }
+
+        // Save teacher changes
+        function saveTeacherChanges() {
+            const teacherId = parseInt(document.getElementById('editTeacherId').value);
+            const name = document.getElementById('editTeacherName').value;
+            const position = document.getElementById('editTeacherPosition').value;
+            const qualification = document.getElementById('editTeacherQualification').value;
+            const experience = document.getElementById('editTeacherExperience').value;
+            const phone = document.getElementById('editTeacherPhone').value;
+            
+            let teachers = JSON.parse(localStorage.getItem('teachers')) || initialTeachers;
+            const teacherIndex = teachers.findIndex(t => t.id === teacherId);
+            
+            if (teacherIndex !== -1) {
+                // Check if a new photo was uploaded
+                const photoInput = document.getElementById('editTeacherPhoto');
+                let photo = document.getElementById('currentTeacherPhoto').value;
+                
+                if (photoInput.files.length > 0) {
+                    const file = photoInput.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        photo = e.target.result;
+                        teachers[teacherIndex] = {
+                            id: teacherId,
+                            name,
+                            position,
+                            qualification,
+                            experience,
+                            phone,
+                            photo
+                        };
+                        
+                        localStorage.setItem('teachers', JSON.stringify(teachers));
+                        loadTeachers();
+                        
+                        const editTeacherModal = bootstrap.Modal.getInstance(document.getElementById('editTeacherModal'));
+                        editTeacherModal.hide();
+                        
+                        alert('Teacher information updated successfully!');
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    // No new photo, just update other info
+                    teachers[teacherIndex] = {
+                        id: teacherId,
+                        name,
+                        position,
+                        qualification,
+                        experience,
+                        phone,
+                        photo
+                    };
+                    
+                    localStorage.setItem('teachers', JSON.stringify(teachers));
+                    loadTeachers();
+                    
+                    const editTeacherModal = bootstrap.Modal.getInstance(document.getElementById('editTeacherModal'));
+                    editTeacherModal.hide();
+                    
+                    alert('Teacher information updated successfully!');
+                }
+            }
+        }
+
+        // Delete teacher
+        function deleteTeacher() {
+            const teacherId = parseInt(document.getElementById('editTeacherId').value);
+            
+            if (confirm('Are you sure you want to delete this teacher?')) {
+                let teachers = JSON.parse(localStorage.getItem('teachers')) || initialTeachers;
+                teachers = teachers.filter(t => t.id !== teacherId);
+                
+                localStorage.setItem('teachers', JSON.stringify(teachers));
+                loadTeachers();
+                
+                const editTeacherModal = bootstrap.Modal.getInstance(document.getElementById('editTeacherModal'));
+                editTeacherModal.hide();
+                
+                alert('Teacher deleted successfully!');
+            }
+        }
+
+        // Add new teacher
+        function addNewTeacher() {
+            const name = document.getElementById('teacherName').value;
+            const position = document.getElementById('teacherPosition').value;
+            const qualification = document.getElementById('teacherQualification').value;
+            const experience = document.getElementById('teacherExperience').value;
+            const phone = document.getElementById('teacherPhone').value;
+            const photoInput = document.getElementById('teacherPhoto');
+            
+            if (name && position && qualification && experience) {
+                let teachers = JSON.parse(localStorage.getItem('teachers')) || initialTeachers;
+                
+                // Generate a new ID
+                const newId = teachers.length > 0 ? Math.max(...teachers.map(t => t.id)) + 1 : 1;
+                
+                if (photoInput.files.length > 0) {
+                    const file = photoInput.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        teachers.push({
+                            id: newId,
+                            name,
+                            position,
+                            qualification,
+                            experience,
+                            phone,
+                            photo: e.target.result
+                        });
+                        
+                        localStorage.setItem('teachers', JSON.stringify(teachers));
+                        loadTeachers();
+                        
+                        const addTeacherModal = bootstrap.Modal.getInstance(document.getElementById('addTeacherModal'));
+                        addTeacherModal.hide();
+                        
+                        // Reset form
+                        document.getElementById('teacherForm').reset();
+                        document.getElementById('teacherPhotoPreview').style.display = 'none';
+                        
+                        alert('New teacher added successfully!');
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    // No photo uploaded
+                    teachers.push({
+                        id: newId,
+                        name,
+                        position,
+                        qualification,
+                        experience,
+                        phone,
+                        photo: null
+                    });
+                    
+                    localStorage.setItem('teachers', JSON.stringify(teachers));
+                    loadTeachers();
+                    
+                    const addTeacherModal = bootstrap.Modal.getInstance(document.getElementById('addTeacherModal'));
+                    addTeacherModal.hide();
+                    
+                    // Reset form
+                    document.getElementById('teacherForm').reset();
+                    
+                    alert('New teacher added successfully!');
+                }
+            } else {
+                alert('Please fill all required fields!');
+            }
+        }
+
+        // Save notice
+        function saveNotice() {
+            const title = document.getElementById('noticeTitle').value;
+            const content = document.getElementById('noticeContent').value;
+            const date = document.getElementById('noticeDate').value;
+            
+            if (title && content && date) {
+                let notices = JSON.parse(localStorage.getItem('notices')) || initialNotices;
+                
+                // Generate a new ID
+                const newId = notices.length > 0 ? Math.max(...notices.map(n => n.id)) + 1 : 1;
+                
+                notices.unshift({
+                    id: newId,
+                    title,
+                    content,
+                    date,
+                    isNew: true
+                });
+                
+                localStorage.setItem('notices', JSON.stringify(notices));
+                loadNotices();
+                
+                const noticeModal = bootstrap.Modal.getInstance(document.getElementById('noticeModal'));
+                noticeModal.hide();
+                
+                // Reset form
+                document.getElementById('noticeForm').reset();
+                
+                alert('Notice added successfully!');
+            } else {
+                alert('Please fill all fields!');
+            }
+        }
+
+        // Delete notice
+        function deleteNotice(noticeId) {
+            if (confirm('Are you sure you want to delete this notice?')) {
+                let notices = JSON.parse(localStorage.getItem('notices')) || initialNotices;
+                notices = notices.filter(n => n.id !== noticeId);
+                
+                localStorage.setItem('notices', JSON.stringify(notices));
+                loadNotices();
+                
+                alert('Notice deleted successfully!');
+            }
+        }
+
+        // Remove all notices
+        function removeNotices() {
+            if (confirm('Are you sure you want to remove all notices? This cannot be undone.')) {
+                localStorage.removeItem('notices');
+                loadNotices();
+                alert('All notices have been removed!');
+            }
+        }
+
+        // Upload image
+        function uploadImage() {
+            const fileInput = document.getElementById('imageUpload');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    // Store the image in localStorage
+                    localStorage.setItem('collegeHeroImage', e.target.result);
+                    
+                    // Update the hero section background
+                    document.querySelector('.hero-section').style.backgroundImage = 
+                        `linear-gradient(rgba(78, 42, 142, 0.8), rgba(78, 42, 142, 0.8)), url(${e.target.result})`;
+                    
+                    const imageModal = bootstrap.Modal.getInstance(document.getElementById('imageModal'));
+                    imageModal.hide();
+                    
+                    alert('Image uploaded successfully!');
+                };
+                
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select an image to upload!');
+            }
+        }
+
+        // Remove hero image
+        function removeHeroImage() {
+            if (confirm('Are you sure you want to remove the current image?')) {
+                localStorage.removeItem('collegeHeroImage');
+                document.querySelector('.hero-section').style.backgroundImage = 
+                    `linear-gradient(rgba(78, 42, 142, 0.8), rgba(78, 42, 142, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234e2a8e"/><text x="50%" y="50%" font-size="12" text-anchor='middle' fill="%23ffffff" font-family="monospace">College Image</text></svg>')`;
+                
+                alert('Image removed successfully!');
+            }
+        }
+
+        // Export data (simulated)
+        function exportData() {
+            alert('Data export functionality would be implemented here. This would typically download a CSV or Excel file.');
+        }
+
+        // Show admin panel and update UI
+        function showAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('loginNavItem').style.display = 'none';
+            document.getElementById('logoutNavItem').classList.remove('logout-btn');
+            document.getElementById('logoutNavItem').style.display = 'block';
+            
+            // Add edit icons to teacher cards
+            loadTeachers();
+            loadNotices();
+        }
+
+        // Hide admin panel and update UI
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('loginNavItem').style.display = 'block';
+            document.getElementById('logoutNavItem').classList.add('logout-btn');
+            document.getElementById('logoutNavItem').style.display = 'none';
+            
+            // Remove edit icons from teacher cards
+            loadTeachers();
+            loadNotices();
+        }
+
+        // Login functionality
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation for demo purposes
+            if (username === 'admin' && password === 'admin123') {
+                localStorage.setItem('adminLoggedIn', 'true');
+                showAdminPanel();
+                
+                var loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                loginModal.hide();
+                
+                alert('Login successful! Admin panel is now visible.');
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.setItem('adminLoggedIn', 'false');
+            hideAdminPanel();
+            alert('You have been logged out successfully.');
+        });
+
+        // Check for saved hero image on page load
+        window.addEventListener('load', function() {
+            const savedImage = localStorage.getItem('collegeHeroImage');
+            if (savedImage) {
+                document.querySelector('.hero-section').style.backgroundImage = 
+                    `linear-gradient(rgba(78, 42, 142, 0.8), rgba(78, 42, 142, 0.8)), url(${savedImage})`;
+            }
+        });
+    </script>
+</body>
+</html>
